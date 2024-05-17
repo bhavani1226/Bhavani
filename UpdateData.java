@@ -1,4 +1,4 @@
-package emp.codejava;
+package net.codejava;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,16 +6,15 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class UpdateData {
-	
 	public static void main(String[] args) {
-		String dbURL = "jdbc:mysql://localhost:3306/employeedb";
+		String dbURL = "jdbc:mysql://localhost:3306/sampledb";
 		String username = "root";
 		String password = "Bunny@123#8";
 		 
 		try {
 		 
 		    Connection conn = DriverManager.getConnection(dbURL, username, password);
-		    String sql = "UPDATE employee SET password=?, fullname=?, email=? WHERE empname=?";
+		    String sql = "UPDATE Users SET password=?, fullname=?, email=? WHERE username=?";
 		    
 		    PreparedStatement statement = conn.prepareStatement(sql);
 		    statement.setString(1, "123");
@@ -25,7 +24,7 @@ public class UpdateData {
 		     
 		    int rowsUpdated = statement.executeUpdate();
 		    if (rowsUpdated > 0) {
-		        System.out.println("An existing employee was updated successfully!");
+		        System.out.println("An existing user was updated successfully!");
 		    }
 		} catch (SQLException ex) {
 		    ex.printStackTrace();
@@ -35,6 +34,3 @@ public class UpdateData {
 	
 
 }
-
-
-
